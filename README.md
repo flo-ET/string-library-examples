@@ -17,7 +17,7 @@ let arrayOfCRMEntities = [
             name: 'Some Product',
             language: 'en-us',
         },
-        iDoNotWantThisKey: "reference.link/dont_translate"  
+        iDoNotWantThisKey: "reference.link/dont_translate",
         translations: [
             {
                 id: 321321312,
