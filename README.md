@@ -5,7 +5,7 @@ Please read the ["String Library"](https://documenter.getpostman.com/view/754027
 
 ## Simple workflow example
 This is a very high level guide on basic steps we recommend you follow in order to work with the string library.
-~It's assumed that you have created an easytranslate account, string library and an automation workflow. You've also generated a PAT or otherwise have access to fresh access tokens.~
+*It's assumed that you have created an easytranslate account, string library and an automation workflow. You've also generated a PAT or otherwise have access to fresh access tokens.*
 
 0. Regestier a webhook endpoint here `/laas/api/v1/teams/:team_name/webhook-endpoints`. Make sure to specify `task.updated` in the events to reduce incoming traffic.
 1. Gather and compile strings you want translated. See examples [here](code_examples/README.md).
@@ -21,6 +21,6 @@ This is a very high level guide on basic steps we recommend you follow in order 
 ``` 
 7. (optional) Follow the examples mentioned in step 1 to integrate the translations into your system.
 
-[1] There are other ways to update the library, but this is the preferred method. It's not mandatory to provide translations, but considering you already have some translations, this avoids paying for them.
-[2] Not providing Key names will automatically send all untranslated strings in the library for translation. Providing key names allows you to send keys for translation that have already been translated.
-[3] Automation workflows typically consist of 3 steps: `machine_translation`, `translation`, `internal_review`. If your automation workflow includes human translation, you probably want to ignore when the `machine_translation` step is finished. `internal_review` is handy if you make your own edits to projects using the review editor, and want those updates to apply to your system, whether you have human translation step or not.
+[^1] There are other ways to update the library, but this is the preferred method. It's not mandatory to provide translations, but considering you already have some translations, this avoids paying for them.
+[^2] Not providing Key names will automatically send all untranslated strings in the library for translation. Providing key names allows you to send keys for translation that have already been translated.
+[^3] Automation workflows typically consist of 3 steps: `machine_translation`, `translation`, `internal_review`. If your automation workflow includes human translation, you probably want to ignore when the `machine_translation` step is finished. `internal_review` is handy if you make your own edits to projects using the review editor, and want those updates to apply to your system, whether you have human translation step or not.
