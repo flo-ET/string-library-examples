@@ -23,18 +23,15 @@ class libString {
 }
 
 /* 
- Mapping assumes that your CRM uses language codes and that they are not identical to ET language codes
+ Mapping assumes that your CMS uses language codes and that they are not identical to ET language codes
  You need to figure out the mapping yourself
  You will also need to create mappings in both directions for source and target language codes
 */ 
-const langMapCRMToEtSource = {
+const langMapCMSToEtSource = {
     'en-us': 'en',
     'de-de': 'de',
 }
-const langMapEtToCRMTarget = {
-    'fr_FR': 'fr',
-}
-const langMapCRMToETTarget = {
+const langMapCMSToETTarget = {
     'fr': 'fr_FR',
 }
 
@@ -49,29 +46,27 @@ function makeLibraryEntry(_entity, _attr) {
         let keyName = `${_entity.id}.${_attr}`;
         let keyExtId = _entity.id;
         let key = {[keyName]: new libKey(keyName, keyExtId)};
-        let sourceString = {[langMapCRMToEtSource[_entity.attributes.language]]: new libString(`source.${keyExtId}`, langMapCRMToEtSource[_entity.attributes.language], _entity[_attr])};
+        let sourceString = {[langMapCMSToEtSource[_entity.attributes.language]]: new libString(`source.${keyExtId}`, langMapCMSToEtSource[_entity.attributes.language], _entity[_attr])};
         Object.assign(key[keyName].strings, sourceString);
         for (let targetEntity of _entity.translations) {
             let targetString = {
-                [langMapCRMToETTarget[targetEntity.attributes.language]]: 
-                    new libString(targetEntity.id, langMapCRMToETTarget[targetEntity.attributes.language], "")
+                [langMapCMSToETTarget[targetEntity.attributes.language]]: 
+                    new libString(targetEntity.id, langMapCMSToETTarget[targetEntity.attributes.language], "")
             }
             Object.assign(key[keyName].strings, targetString)
         }
         return key;
-    } else {
-        return;
     }
 }
 
 /**
- * Pass an array of CRM Objects to be flattened and collected into keys
+ * Pass an array of CMS Objects to be flattened and collected into keys
  * An array of (possibly nested) child attributes can be provided to filter for
  * @param {Array} entityArray
  * @param {Array} attrs
  * @returns {Object}
  */
-function transformCRMEntityArray(entityArray, attrs = []) {
+function transformCMSEntityArray(entityArray, attrs = []) {
     let keys = {};
     for (let entity of entityArray) {
         const safeEntity = safeKeyNames(entity)
@@ -113,7 +108,7 @@ function transformStringLib(stringLib) {
 }
 
 /**
- * Recursively iterate the CRM Object's attrivutes and prepare them for being flattened
+ * Recursively iterate the CMS Object's attrivutes and prepare them for being flattened
  * When flattening, objects in arrays will have their index in that array indicated
  * Since there are some Objects where the attribute names are also numbers, we need to make sure that we can safely unflatten them to the correct type
  * @param {Object} obj 
@@ -145,5 +140,4 @@ function safeKeyNames(obj, danger = false) {
         return replaceAllObjKeys(obj, getOldKey);
     }
     return replaceAllObjKeys(obj, getNewKey);
-
 }

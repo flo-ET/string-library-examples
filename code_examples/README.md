@@ -1,13 +1,13 @@
 # string-library-examples
-Code examples and functions that help transforming CRM objects for use with EasyTranslate's String Library API
+Code examples and functions that help transforming CMS objects for use with EasyTranslate's String Library API
 
-Many modern CRMs give you multilingual support and APIs to retrieve and update translations for CRM objects (often called entity in these examples).
+Many modern CMSs give you multilingual support and APIs to retrieve and update translations for CMS objects (often called entity in these examples).
 
 You can use and modify these functions to work with your specific platform.
 In general, the goal is to transform Entities like this:
 
 ```javascript
-let arrayOfCRMEntities = [
+let arrayOfCMSEntities = [
     {
 
         id: 123123123,
@@ -81,15 +81,15 @@ There are steps involved in making sure this works properly:
 3. Filter for child attributes that should be translated
 4. Plug the resulting flat entity into some constructor to create the library entry
 
-On returning translated content back to your crm (especially with deeply nested objects):
+On returning translated content back to your CMS (especially with deeply nested objects):
 1. Retrieve the string library from EasyTranslate
 2. Also retrieve the array of Entities that you want to update
 3. Flatten the entities like you did above 
 4. Iterate the library, and reconstruct the flat entities from the keys (many keys for one Object/Entity)
 5. Assign the attributes of the reconstructed object to the target flat object
-6. unflatten the target object, making it ready to send to your CRM
+6. unflatten the target object, making it ready to send to your CMS
 
-NOTE: If your CRM creates new Objects with some reference to the original Object for each translation, consider using the string external IDs to embedd that information.
+NOTE: If your CMS creates new Objects with some reference to the original Object for each translation, consider using the string external IDs to embedd that information.
 
 
 ## [Javascript snippet](/javascript/CMStoStringLib.js)
