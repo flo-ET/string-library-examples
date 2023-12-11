@@ -5,7 +5,7 @@ Please read the ["String Library"](https://documenter.getpostman.com/view/754027
 
 ## Simple workflow example
 This is a very high level guide on basic steps we recommend you follow in order to work with the string library.
-*It's assumed that you have created an easytranslate account, string library and an automation workflow. You've also generated a PAT or otherwise have access to fresh access tokens.*
+###### *It's assumed that you have created an easytranslate account, string library and an automation workflow. You've also generated a PAT or otherwise have access to fresh access tokens.*
 
 0. Regestier a webhook endpoint here `/laas/api/v1/teams/:team_name/webhook-endpoints`. Make sure to specify `task.updated` in the events to reduce incoming traffic.
 1. Gather and compile strings you want translated. See examples [here](code_examples/README.md).
